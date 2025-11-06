@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import reactKawaiiLogo from '/React_sawalogo.png'
 import nodejsKawaiiLogo from '/Node_sawalogo.png'
 import './App.css'
+import { useNavigate } from 'react-router-dom' // ReactRouterを使うために必要なもの
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,6 +13,10 @@ function App() {
   }
   const counterShow = () => {
     alert("現在" + count + "回ボタンをクリックしました。");
+  }
+  const navigate = useNavigate()
+  const changePage = () => {
+    navigate('/dice')
   }
 
   return (
@@ -34,6 +39,9 @@ function App() {
         <p>
           <code>src/App.jsx</code> を編集したり保存したりして色々いじってあそんでみてね。
         </p>
+      </div>
+      <div>
+        <button onClick={changePage}>サイコロ画面へ</button>
       </div>
       <p className="read-the-docs">
         ViteとReactのロゴをクリックすると、詳細を公式ページで確認できます。
