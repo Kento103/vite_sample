@@ -4,4 +4,15 @@ import react from '@vitejs/plugin-react-swc'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  server: {
+    proxy: {
+      // /api/bcdice/*に来たリクエストをhttps://bcdice.onlinesession.app/* に中継する
+      '/api/bcdice': {
+        target: 'https://bcdice.onlinesession.app',
+        changeOrigin: true,
+        secure: true,
+        rewrite: (path) => path.replace(/^\/api\/bcdice/, '')
+      }
+    }
+  }
 })

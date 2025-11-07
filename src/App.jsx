@@ -5,6 +5,8 @@ import reactKawaiiLogo from '/React_sawalogo.png'
 import nodejsKawaiiLogo from '/Node_sawalogo.png'
 import './App.css'
 import { useNavigate } from 'react-router-dom' // ReactRouterを使うために必要なもの
+import useSound from 'use-sound' // 音楽再生に使うもの
+import sfx from './assets/kira2.mp3' // 対象音楽ファイル
 
 function App() {
   const [count, setCount] = useState(0)
@@ -18,6 +20,9 @@ function App() {
   const changePage = () => {
     navigate('/dice')
   }
+
+  // user-soundフックを初期化する
+  const [play, { stop, isPlaying}] = useSound(sfx, {volume: 0.7})
 
   return (
     <>
@@ -36,6 +41,13 @@ function App() {
         </button>
         <button onClick={testClick}>ポップアップ表示</button>
         <button onClick={counterShow}>現在のクリック回数を表示する</button>
+
+        {/* 音再生ボタンと停止ボタン */}
+        <div style={{ marginTop: 12}}>
+          <button onClick={play}>効果音再生</button>
+          <button onClick={stop} disabled={!isPlaying} style={{ marginLeft: 8 }}>停止</button>
+        </div>
+
         <p>
           <code>src/App.jsx</code> を編集したり保存したりして色々いじってあそんでみてね。
         </p>
