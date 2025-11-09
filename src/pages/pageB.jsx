@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom' // ReactRouterを使うために必要なもの
 import axios from 'axios'
+import { TopLogo } from '../components/TopLogo/TopLogo'
 
 function PageB() {
     const navigate = useNavigate()
@@ -19,6 +20,7 @@ function PageB() {
     }
     return (
         <>
+            <TopLogo />
             <h1>さいころを振ってみよう！</h1>
             <button onClick={diceRole}>さいころを振る</button>
             <button onClick={changePage}>トップページに戻る</button>
